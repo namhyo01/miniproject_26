@@ -11,7 +11,6 @@ const Kakao = () => {
       level: 3,
     };
     const map = new kakao.maps.Map(mapRef.current, options);
-    console.dir(typeof map);
   });
 
   return (

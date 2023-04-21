@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../store/auth-context";
+import { Button } from "react-bootstrap";
 
 function Auth() {
   const ctx = useContext(AuthContext);
@@ -44,9 +45,9 @@ function Auth() {
           />
         </div>
         <div>
-          <button type="button" onClick={buttonClickHandler}>
+          <Button type="button" variant="primary" onClick={buttonClickHandler}>
             로그인
-          </button>
+          </Button>
         </div>
       </form>
     </>
