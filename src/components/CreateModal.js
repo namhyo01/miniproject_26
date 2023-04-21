@@ -70,11 +70,16 @@ function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
       </Modal.Header>
 
       <Modal.Body>
-        <form onChange={inputChangeHandler}>
+        <form>
           <div>
             <label htmlFor="place">장소</label>
             <br />
-            <input name="place" type="text" value={meeting.place} />
+            <input
+              name="place"
+              type="text"
+              value={meeting.place}
+              onChange={inputChangeHandler}
+            />
             <Button variant="primary" onClick={findPlace}>
               찾기
             </Button>
@@ -86,12 +91,22 @@ function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
           <div>
             <label htmlFor="time">시간</label>
             <br />
-            <input name="time" type="datetime-local" />
+            <input
+              name="time"
+              type="datetime-local"
+              value={meeting.time}
+              onChange={inputChangeHandler}
+            />
           </div>
           <div>
             <label htmlFor="chat">오픈채팅 링크</label>
             <br />
-            <input name="chat" type="text" />
+            <input
+              name="chat"
+              type="text"
+              value={meeting.chat}
+              onChange={inputChangeHandler}
+            />
           </div>
         </form>
       </Modal.Body>

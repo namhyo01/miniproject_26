@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import AuthContext from "./store/auth-context";
-import Auth from "./pages/Auth";
+import Auth from "./components/Auth";
 import MeetList from "./components/MeetList";
 import Bar from "./components/Bar";
 import CreateModal from "./components/CreateModal";
-import Kakao from "./components/Kakao";
 
 function App() {
   const ctx = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
   const [meets, setMeets] = useState([]);
-
-  useEffect(() => {
-    console.log("meets:", meets);
-  }, [meets]);
 
   if (!ctx.user) {
     return <Auth />;

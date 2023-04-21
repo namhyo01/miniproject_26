@@ -7,7 +7,7 @@ const MeetList = ({ meets }) => {
   return (
     <ul>
       {meets.map((meet) => (
-        <Meet key={meet.place.id} meet={meet} />
+        <Meet key={meet.place.id + meet.date} meet={meet} />
       ))}
     </ul>
   );
