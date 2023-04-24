@@ -1,10 +1,24 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Dropdown from "react-bootstrap/Dropdown";
+import Bootstrap from "./test";
 import { useCallback, useState, useEffect } from "react";
 import PlaceList from "./PlaceList";
 const { kakao } = window;
 
 function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
+
+  const handleChange = item => {
+    console.log('asdas')
+    if (item) {
+      alert(`You are selected ${item.name || item}`);
+    } else {
+      alert(`Selection cleared`);
+    }
+  };
+  
+  const items = [];
+
   const closeModal = useCallback(() => {
     setOpenModal(false);
   }, [setOpenModal]);
@@ -35,6 +49,12 @@ function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
       };
     });
   }, []);
+
+  // const inputOnClickHander = e =>{
+  //   if (e.key === 'Enter'){
+  //     findPlace();
+  //   }
+  // };
 
   const clickPlace = useCallback((place) => {
     setSearchPlaceList([]);
@@ -71,7 +91,16 @@ function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
 
       <Modal.Body>
         <form>
-          <div>
+          <Bootstrap
+           label="장소"
+           items={items}
+           onClick={clickPlace}
+          //  onChange={handleChange}
+          >
+           
+          </Bootstrap>
+
+          {/* <div>
             <label htmlFor="place">장소</label>
             <br />
             <input
@@ -79,20 +108,22 @@ function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
               type="text"
               value={meeting.place}
               onChange={inputChangeHandler}
+              onKeyDown={inputOnClickHander}
             />
             <Button variant="primary" onClick={findPlace}>
               찾기
             </Button>
-          </div>
-          {searchPlaceList.length > 0 &&
+          </div> */}
+          {/* {searchPlaceList.length > 0 &&
             searchPlaceList.map((place) => (
               <PlaceList key={place.id} place={place} onClick={clickPlace} />
-            ))}
+            ))} */}
           <div>
             <label htmlFor="time">시간</label>
             <br />
             <input
               name="time"
+              className="form-control w-50"
               type="datetime-local"
               value={meeting.time}
               onChange={inputChangeHandler}
@@ -104,6 +135,7 @@ function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
             <input
               name="chat"
               type="text"
+              className="form-control"
               value={meeting.chat}
               onChange={inputChangeHandler}
             />
