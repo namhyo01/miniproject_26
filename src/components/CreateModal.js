@@ -5,16 +5,6 @@ import PlaceList from "./PlaceList";
 const { kakao } = window;
 
 function CreateModal({ meets, setMeets, openModal, setOpenModal }) {
-  const handleChange = (item) => {
-    if (item) {
-      alert(`You are selected ${item.name || item}`);
-    } else {
-      alert(`Selection cleared`);
-    }
-  };
-
-  const items = ["harry", "james"];
-
   const closeModal = useCallback(() => {
     setOpenModal(false);
   }, [setOpenModal]);
